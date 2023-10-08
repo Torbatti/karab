@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/torbatti/karab/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -22,7 +23,7 @@ func ConnectDb() {
 	}
 	// db.Logger = logger.Default.LogMode(logger.Info)
 
-	db.AutoMigrate()
+	db.AutoMigrate(&models.Applicant{}, &models.Company{}, &models.List{})
 
 	DataBase = Storage{Db: db}
 }
