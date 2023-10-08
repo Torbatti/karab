@@ -1,0 +1,10 @@
+
+{{template "partials/header" .}}
+
+<h1>{{.Title}}</h1>
+
+<button hx-post="/clicked" hx-swap="outerHTML">
+    Click Me
+</button>
+
+{{template "partials/footer" .}}
