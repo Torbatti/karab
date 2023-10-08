@@ -9,11 +9,10 @@ import (
 )
 
 func ApplicantApis(app *fiber.App) {
-	// app.Post("/api/applicant", CreateApplicant)
-	// app.Get("/api/applicant/", GetApplicants)
-	// app.Get("/api/applicant/:id", GetApplicant)
-	// app.Put("/api/applicant/:id", CreateApplicant)
-	// app.Delete("/api/applicant/:id", CreateApplicant)
+	app.Post("/api/applicants/", CreateApplicant)
+	app.Get("/api/applicants/", GetApplicants)
+	app.Get("/api/applicants/:id", GetApplicant)
+	app.Put("/api/applicants/:id", UpdateApplicant)
 }
 
 type Applicant struct {
@@ -76,5 +75,35 @@ func GetApplicant(c *fiber.Ctx) error {
 	}
 	respApl := CreateResponseApplicant(apl)
 
+	return c.Status(200).JSON(respApl)
+}
+
+func UpdateApplicant(c *fiber.Ctx) error {
+	// Params
+	id, err := c.ParamsInt("id")
+	if err != nil {
+		// TODO : BETTER ERROR HANDLING AND VALIDATION
+		return c.Status(400).JSON("ID is not provided correctly")
+	}
+
+	// Find Applicant
+	var apl models.Applicant
+	if err := findApplicant(id, &apl); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
+
+	// Update Applicant
+	type UpdatedApplicant struct {
+		ApplicantName string `json:"applicant_name"`
+	}
+	var updatedApplicant UpdatedApplicant
+	if err := c.BodyParser(&updatedApplicant); err != nil {
+		return c.Status(500).JSON(err.Error())
+	}
+	apl.ApplicantName = updatedApplicant.ApplicantName
+
+	// Save To db
+	core.DataBase.Db.Save(&apl)
+	respApl := CreateResponseApplicant(apl)
 	return c.Status(200).JSON(respApl)
 }
