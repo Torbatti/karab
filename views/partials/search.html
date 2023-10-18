@@ -1,0 +1,35 @@
+<form id="search" class="wbox flex jcontent-between aitems-center">
+  <div class="bgc2">
+    <input type="text" name="search" class="input" placeholder="عنوان شغل , عنوان شرکت , ...">
+  </div>
+  <div class="bgc2">
+    <select name="city">
+      <option value="all">همه استان ها</option>
+      <option value="tehran">تهران</option>
+      <option value="gazvin">قزوین</option>
+      <option value="mashhad">مشهد</option>
+    </select>
+  </div>
+  <div class="bgc2">
+    <select name="city">
+      <option value="all">تمام قرارداد ها</option>
+      <option value="tehran">تمام وقت</option>
+      <option value="gazvin">پاره وقت</option>
+      <option value="mashhad">کارآموزی</option>
+    </select>
+  </div>
+  <div class="bgc2">
+    <select name="speciality">
+      <option value="all">همه حوزه ها</option>
+      <option value="programming">برنامه نویسی</option>
+      <option value="it">IT</option>
+      <option value="backend">Backend</option>
+      <option value="frontend">Frontend</option>
+    </select>
+  </div>
+  <div class="bgc1 tc2">
+    <button hx-post="/clicked" hx-target="#main" hx-swap="innerHTML">
+      جستجو در مشاغل
+    </button>
+  </div>
+</form>

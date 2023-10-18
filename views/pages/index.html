@@ -1,10 +1,10 @@
-
 {{template "partials/header" .}}
+<div id="IndexTopBox" class="">
+  {{template "partials/search".}}
+</div>
 
-<h1>{{.Title}}</h1>
-
-<button hx-post="/clicked" hx-swap="outerHTML">
-    Click Me
-</button>
+<div id="main">
+  
+</div>
 
 {{template "partials/footer" .}}
