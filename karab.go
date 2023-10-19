@@ -33,11 +33,13 @@ func main() {
 	apis.CompanyApis(app)
 	apis.JobApis(app)
 
-	// Views
-	core.BaseViews(app)
-	core.ApplicantViews(app)
-	core.CompanyViews(app)
-	core.JobViews(app)
+	// Core
+	core.Base(app)
+	core.Auth(app)
+	core.Search(app)
+	core.Applicant(app)
+	core.Company(app)
+	core.Job(app)
 
 	app.Stack() // Stack Trace
 	app.Listen(":2233")
