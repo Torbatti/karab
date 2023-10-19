@@ -1,27 +1,28 @@
 {{template "partials/header" .}}
 <div id="IndexTopBox" class="bgc3">
 </div>
-
-<div id="auth" class="wbox flex jcontent-evenly aitems-center">
-  <div>
-    <div id="error"></div>
-    <form class="flex flex-col mid-gap">
-      
-      <div class="flex jcontent-between aitems-center mid-gap">
-        <label for="">نام کاربری</label>
-        <input type="text" name="username" placeholder="نام کاربری">
-      </div>
-
-      <div class="flex jcontent-between aitems-center mid-gap">
-        <label for="">رمز عبور</label>
-        <input type="password" name="password" placeholder="رمز عبور">
-      </div>
-
-      <button hx-post="/dologin" hx-redirect="/">ورود</button>
-    </form>
-  </div>
-  <div>
-    <img src="https://picsum.photos/720?grayscale&blur=2" alt="">
+<div id="main">
+  <div id="auth" class="wbox flex jcontent-evenly aitems-center">
+    <div>
+      <div id="error"></div>
+      <form class="flex flex-col mid-gap">
+        
+        <div class="flex jcontent-between aitems-center mid-gap">
+          <label for="">نام کاربری</label>
+          <input type="text" name="username" placeholder="نام کاربری">
+        </div>
+  
+        <div class="flex jcontent-between aitems-center mid-gap">
+          <label for="">رمز عبور</label>
+          <input type="password" name="password" placeholder="رمز عبور">
+        </div>
+  
+        <button hx-post="/hx/login-btn">ورود</button>
+      </form>
+    </div>
+    <div>
+      <img src="https://picsum.photos/720?grayscale&blur=2" alt="">
+    </div>
   </div>
 </div>
 
