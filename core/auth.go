@@ -29,7 +29,7 @@ func Auth(app *fiber.App) {
 		}, "layouts/main")
 	})
 
-	app.Post("/dologin", func(c *fiber.Ctx) error {
+	app.Post("/hx/login-btn", func(c *fiber.Ctx) error {
 		l := new(AuthForm)
 		if err := c.BodyParser(l); err != nil {
 			return err
@@ -37,18 +37,32 @@ func Auth(app *fiber.App) {
 		log.Println(l.UserName)
 		log.Println(l.Password)
 
-		return c.SendStatus(400)
+		// IMPLEMENT BASIC AUTH MIDDLEWARE
+		// c.Set("HX-Push-Url", "/")
+		c.Set("HX-Redirect", "/")
+
+		log.Println(c.GetRespHeaders())
+
+		// ONLY IF LOGGED IN RETURN 200
+		return c.SendStatus(200)
 	})
 
-	app.Post("/dosignup", func(c *fiber.Ctx) error {
+	app.Post("/hx/signup-btn", func(c *fiber.Ctx) error {
 		l := new(AuthForm)
 		if err := c.BodyParser(l); err != nil {
 			return err
 		}
 		log.Println(l.UserName)
 		log.Println(l.Password)
+		// TODO: LOGIN AFTER SIGNUP
+		// IMPLEMENT BASIC AUTH MIDDLEWARE
+		// c.Set("HX-Push-Url", "/")
+		c.Set("HX-Redirect", "/")
 
-		return c.SendStatus(400)
+		log.Println(c.GetRespHeaders())
+
+		// ONLY IF LOGGED IN RETURN 200
+		return c.SendStatus(200)
 	})
 
 }
