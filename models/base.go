@@ -18,6 +18,7 @@ type Company struct {
 type Job struct {
 	ID           uint `json:"id" gorm:"primaryKey"`
 	CreatedAt    time.Time
+	Name         string `json:"job_name"`
 	Description  string `json:"Description"`
 	CompanyRefer uint
 }
