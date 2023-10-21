@@ -20,16 +20,16 @@ func Auth(app *fiber.App) {
 func AuthSignup(app *fiber.App) {
 
 	app.Post("/hx/signup-btn", func(c *fiber.Ctx) error {
-		l := new(AuthForm)
-		if err := c.BodyParser(l); err != nil {
+		a := new(AuthForm)
+		if err := c.BodyParser(a); err != nil {
 			return err
 		}
-		log.Println(l.UserName)
-		log.Println(l.Password)
+		log.Println(a.UserName)
+		log.Println(a.Password)
 
 		// Create User
 		var apl models.Applicant
-		apl.ApplicantName = l.UserName
+		apl.ApplicantName = a.UserName
 		core.DataBase.Db.Create(&apl)
 		println(apl.ApplicantName)
 
@@ -48,16 +48,16 @@ func AuthSignup(app *fiber.App) {
 
 func AuthLogin(app *fiber.App) {
 	app.Post("/hx/login-btn", func(c *fiber.Ctx) error {
-		l := new(AuthForm)
-		if err := c.BodyParser(l); err != nil {
+		a := new(AuthForm)
+		if err := c.BodyParser(a); err != nil {
 			return err
 		}
-		log.Println(l.UserName)
-		log.Println(l.Password)
+		log.Println(a.UserName)
+		log.Println(a.Password)
 
 		// Find User
 		var apl models.Applicant
-		if err := core.DataBase.Db.Find(&apl, "applicant_name = ?", l.UserName).Error; err != nil {
+		if err := core.DataBase.Db.Find(&apl, "applicant_name = ?", a.UserName).Error; err != nil {
 			log.Println(err)
 		}
 		log.Println(apl.CreatedAt)
