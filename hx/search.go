@@ -1,4 +1,4 @@
-package core
+package hx
 
 import (
 	"log"
@@ -12,7 +12,7 @@ type SearchForm struct {
 	Speciality string `form:"speciality"`
 }
 
-func Search(app *fiber.App) {
+func SearchHX(app *fiber.App) {
 
 	app.Post("/hx/search-btn", func(c *fiber.Ctx) error {
 		j := new(SearchForm)

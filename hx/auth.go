@@ -1,9 +1,11 @@
-package core
+package hx
 
 import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/torbatti/karab/core"
+	"github.com/torbatti/karab/models"
 )
 
 type AuthForm struct {
@@ -12,23 +14,6 @@ type AuthForm struct {
 }
 
 func Auth(app *fiber.App) {
-
-	app.Get("/signup", func(c *fiber.Ctx) error {
-		return c.Render("pages/signup", fiber.Map{
-			"HeadTitle":   "ثبت نام",
-			"KeyWords":    "KeyWords",
-			"Description": "Description",
-		}, "layouts/main")
-	})
-
-	app.Get("/login", func(c *fiber.Ctx) error {
-		return c.Render("pages/login", fiber.Map{
-			"HeadTitle":   "ورود",
-			"KeyWords":    "KeyWords",
-			"Description": "Description",
-		}, "layouts/main")
-	})
-
 	app.Post("/hx/login-btn", func(c *fiber.Ctx) error {
 		l := new(AuthForm)
 		if err := c.BodyParser(l); err != nil {
@@ -36,6 +21,13 @@ func Auth(app *fiber.App) {
 		}
 		log.Println(l.UserName)
 		log.Println(l.Password)
+
+		// Find User
+		var apl models.Applicant
+		if err := core.DataBase.Db.Find(&apl, "applicant_name = ?", l.UserName).Error; err != nil {
+			log.Println(err)
+		}
+		log.Println(apl.CreatedAt)
 
 		// IMPLEMENT BASIC AUTH MIDDLEWARE
 		// c.Set("HX-Push-Url", "/")
@@ -54,6 +46,13 @@ func Auth(app *fiber.App) {
 		}
 		log.Println(l.UserName)
 		log.Println(l.Password)
+
+		// Create User
+		var apl models.Applicant
+		apl.ApplicantName = l.UserName
+		core.DataBase.Db.Create(&apl)
+		println(apl.ApplicantName)
+
 		// TODO: LOGIN AFTER SIGNUP
 		// IMPLEMENT BASIC AUTH MIDDLEWARE
 		// c.Set("HX-Push-Url", "/")
