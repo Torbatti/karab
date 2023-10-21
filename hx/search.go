@@ -12,7 +12,7 @@ type SearchForm struct {
 	Speciality string `form:"speciality"`
 }
 
-func SearchHX(app *fiber.App) {
+func Search(app *fiber.App) {
 
 	app.Post("/hx/search-btn", func(c *fiber.Ctx) error {
 		j := new(SearchForm)
