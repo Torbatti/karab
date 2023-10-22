@@ -44,8 +44,11 @@ border:2px solid var(--c1);transition:background .25s;border-radius:2px;}
 
 #job {margin:1rem 0;}
 #job #right{display:flex;flex-direction:column;gap:.5rem;}
-#job .job{width:320px;height:144px;padding:.5rem .5rem;border:2px solid var(--c1);transition:background .25s;border-radius:2px;}
+#job .job{width:320px;height:144px;padding:.5rem .5rem;border:2px solid var(--c1);transition:background .25s;border-radius:2px;display:flex;flex-direction:column;justify-content:space-between;}
 #job .job:hover{background:rgb(231, 231, 231);cursor:pointer;}
 #job .job.selected{margin-bottom:1.5rem;background:rgb(231, 231, 231);}
 
 #job #left{width:100%;height:50vh;border:2px solid var(--c1);}
+
+.bposts{margin-top:1rem;}
+.bposts img{width:240px;height:240px;background:var(--c1);margin-bottom:.5rem;}
