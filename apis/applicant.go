@@ -15,13 +15,6 @@ func ApplicantApis(app *fiber.App) {
 	app.Put("/api/applicants/:id", UpdateApplicant)
 }
 
-type Applicant struct {
-	ID            uint   `json:"id" gorm:"primaryKey"`
-	ApplicantName string `json:"applicant_name"`
-}
-
-func Sample(c *fiber.Ctx) {}
-
 func CreateResponseApplicant(apl models.Applicant) Applicant {
 	return Applicant{apl.ID, apl.ApplicantName}
 }
