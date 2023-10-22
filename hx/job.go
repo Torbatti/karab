@@ -16,7 +16,7 @@ func Job(app *fiber.App) {
 			return c.Status(400).JSON("ID is not provided correctly")
 		}
 
-		c.Set("HX-Redirect", "/jobs"+"?"+"id="+strconv.Itoa(id))
+		c.Set("HX-Redirect", "/jobs/"+strconv.Itoa(id))
 
 		return c.SendStatus(200)
 	})
