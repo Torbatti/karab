@@ -1,7 +1,8 @@
 {{template "partials/header" .}}
 <div id="IndexTopBox" class="bgc3">
 </div>
-<div id="main">
+
+<div id="main" class="flex jcontent-center aitems-center">
   <div id="auth" class="wbox flex jcontent-evenly aitems-center">
     <div>
       <div id="error"></div>
@@ -18,6 +19,7 @@
         </div>
   
         <button hx-post="/hx/login-btn">ورود</button>
+        <a href="/forgot" class="text-center">بازیابی رمز عبور</a>
       </form>
     </div>
     <div>
