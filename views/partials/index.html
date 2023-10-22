@@ -1,0 +1,23 @@
+<div id="jobs">
+  {{range .Jobs}}
+    <div class="job" hx-post="/hx/job">
+
+      <div class="top">
+        <a href="" class="name">{{.Name}}</a>
+        <h3 class="company text-small">{{.Company.Name}}</h3>
+      </div>
+
+      <div class="middle flex low-gap aitems-center">
+        <h3 class="text-small">{{.City}}</h3>
+        <h3>|</h3>
+        <h3 class="text-small">{{.Wage}}</h3>
+      </div>
+      
+      <div class="bottom flex jcontent-between aitems-center">
+        <h3 class="text-small">{{.Date}}</h3>
+        <button class="text-small">ارسال رزومه</button>
+      </div>
+
+    </div>
+  {{end}}
+</div>
