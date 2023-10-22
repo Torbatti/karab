@@ -1,0 +1,61 @@
+{{template "partials/header" .}}
+<div id="IndexTopBox" class="">
+  {{template "partials/search".}}
+</div>
+
+<div id="main" class="wbox">
+  <div id="job" class="flex mid-gap">
+    <div id="right">
+      {{range .Job}}
+        <div class="job selected" hx-post="/hx/jobs/{{.ID}}">
+    
+          <div class="top">
+            <h3 class="name">{{.Name}}</h3>
+            <h3 class="company text-small">{{.Company.Name}}</h3>
+          </div>
+
+          <div class="middle flex low-gap aitems-center">
+            <h3 class="text-small">{{.City}}</h3>
+            <h3>|</h3>
+            <h3 class="text-small">{{.Wage}}</h3>
+          </div>
+          
+          <div class="bottom flex low-gap aitems-center">
+            <h3 class="text-small">{{.Date}}</h3>
+            <h3>|</h3>
+            <button class="text-small">ارسال رزومه</button>
+          </div>
+
+        </div>
+      {{end}}
+      {{range .Jobs}}
+        <div class="job" hx-post="/hx/jobs/{{.ID}}">
+  
+          <div class="top">
+            <h3 class="name">{{.Name}}</h3>
+            <h3 class="company text-small">{{.Company.Name}}</h3>
+          </div>
+  
+          <div class="middle flex low-gap aitems-center">
+            <h3 class="text-small">{{.City}}</h3>
+            <h3>|</h3>
+            <h3 class="text-small">{{.Wage}}</h3>
+          </div>
+          
+          <div class="bottom flex low-gap aitems-center">
+            <h3 class="text-small">{{.Date}}</h3>
+            <h3>|</h3>
+            <button class="text-small">ارسال رزومه</button>
+          </div>
+  
+        </div>
+      {{end}}
+    </div>
+    <div id="left">
+
+    </div>
+  </div>
+
+</div>
+
+{{template "partials/footer" .}}
