@@ -6,10 +6,10 @@
 <div id="main" class="wbox">
   <div id="jobs">
     {{range .Jobs}}
-      <div class="job" hx-post="/hx/job">
+      <div class="job" hx-post="/hx/jobs/{{.ID}}">
 
         <div class="top">
-          <a href="" class="name">{{.Name}}</a>
+          <h3 class="name">{{.Name}}</h3>
           <h3 class="company text-small">{{.Company.Name}}</h3>
         </div>
 
