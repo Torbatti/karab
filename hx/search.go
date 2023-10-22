@@ -15,19 +15,20 @@ type SearchForm struct {
 func Search(app *fiber.App) {
 
 	app.Post("/hx/search-btn", func(c *fiber.Ctx) error {
-		j := new(SearchForm)
-		if err := c.BodyParser(j); err != nil {
+		sf := new(SearchForm)
+		if err := c.BodyParser(sf); err != nil {
 			return err
 		}
-		log.Println(j.Name)
-		log.Println(j.City)
-		log.Println(j.Speciality)
 
-		c.Set("HX-Push-Url", "/Test")
-		log.Println(c.GetRespHeaders())
+		log.Println("Form")
+		log.Println(sf.Name)
+		log.Println(sf.City)
+		log.Println(sf.Speciality)
+
+		c.Set("HX-Redirect", "/search"+"?"+"name="+sf.Name+"&city="+sf.City+"&speciality="+sf.Speciality)
 
 		return c.Render("partials/clicked", fiber.Map{
-			"Title": j.Name + " " + j.Speciality + " " + j.City,
+			"Title": sf.Name + " " + sf.Speciality + " " + sf.City,
 		})
 	})
 }
