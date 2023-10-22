@@ -46,6 +46,7 @@ func main() {
 
 	// Job
 	routes.Job(app)
+	hx.Job(app)
 	apis.JobApis(app)
 
 	// Search
