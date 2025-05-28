@@ -40,13 +40,17 @@ type Job struct {
 - [فیلم استفاده از کاراب](/showcase/showcase.webm)
 - صفحه اصلی
 ![](/showcase/SS1.png)
+
+<!--
 - صفحه ورود
 ![](/showcase/SS2.png)
-- صفحه جست و جوی فرصت های شغلی
-![](/showcase/SS3.png)
 - صفحه ی فرصت شغلی انتخاب شده
 ![](/showcase/SS4.png)
 
 
+
+-->
+- صفحه جست و جوی فرصت های شغلی
+![](/showcase/SS3.png)
 
 
